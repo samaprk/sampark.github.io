@@ -1,0 +1,44 @@
+/* 
+#774C60
+#FF6978
+#26081C
+#FFFCF9
+#311847 
+*/
+
+body{
+	padding: 10px 15px;
+	height: fit-content;
+	background: #FECEE9;
+}
+
+/* header */
+
+#header{
+	background: linear-gradient(#FECEE9	,#EB9FEF);
+}
+
+#header img{
+	height: inherit;
+}
+
+/* call-active */
+
+#call-active video{
+	margin: 0 auto;
+}
+
+#float{
+	position: absolute; 
+	left: 65%; 
+	width: 25%;
+	height: 8rem;
+}
+
+/* button-grp */
+
+.button-grp button{
+	width: 12%;
+	border-radius: 50%;
+	margin: 10px 0 0 10px;
+}

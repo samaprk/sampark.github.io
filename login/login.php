@@ -1,0 +1,70 @@
+<?php
+    session_start();
+    if (!empty($_POST['submit'])) {
+        $conn = mysqli_connect("35.200.170.14","root","sampark@99","login_info");
+		if(!$conn){
+	        echo "<script>alert('bijli ka bill tera baap bharega')</script>";
+	    }
+	    if (!empty($_POST['submit'])) {
+	        $un = $_POST['username'];
+	        $pw = $_POST['password'];
+	        if (!empty($un)&&!empty($pw)) {
+	            $sql = "SELECT * from `user` WHERE username='$un' AND password='$pw'";
+                $temp = $conn->query($sql);
+                if(mysqli_num_rows($temp) > 0){
+                    $_SESSION['username'] = $_POST['username'];
+                    header("Location: ../dashboard.php");
+	            }
+	            else{
+                    $ht =  "<div class='alert alert-danger' role='alert'>
+                    Wrong Username or Password!!
+                    </div>";
+	            }
+	        }
+	    }
+	    else{
+	        echo "Enter details";
+	    }
+    }
+?>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../form/assets/css/basic.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <title>Form</title>
+  </head>
+  <body>
+    <div id="header" class="row px-2 shadow">
+        <img src="../form/assets/images/logo.png" style="width: 50%;">
+    </div>
+    <form method="post" action ='login.php'>
+        <?php echo $ht; ?>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+            <!-- <small id="emailHelp" class="form-text text-muted">Make sure it is unique</small> -->
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+        </div>
+        <input type="submit" class="btn btn-primary" name="submit" value="Login">
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="../form/assets/js/action.js"></script>
+  </body>
+</html>

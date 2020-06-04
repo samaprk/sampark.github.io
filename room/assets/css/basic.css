@@ -1,0 +1,28 @@
+/* 
+#774C60
+#FF6978
+#26081C
+#FFFCF9
+#311847 
+*/
+
+body{
+	padding: 10px 15px;
+	height: fit-content;
+	background: #FECEE9;
+}
+
+/* header */
+
+#header{
+	background: linear-gradient(#FECEE9	,#EB9FEF);
+}
+
+#header img{
+	height: inherit;
+}
+
+#display{
+	font-size: 3em;
+	font-weight: bold;
+}
